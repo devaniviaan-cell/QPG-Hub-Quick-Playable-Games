@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submit Your Game — QPG Arcade</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="/QPG%20Logo.png">
+<style>
+  .submit-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 40px;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.28);
+  }
+
+  .submit-container h1 {
+    font-family: var(--font-display);
+    font-size: 32px;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+
+  .submit-container .subtitle {
+    color: var(--ink-muted);
+    margin-bottom: 32px;
+    font-size: 14px;
+  }
+
+  .form-group {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-group label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 12px 14px;
+    outline: none;
+    transition: border-color .15s, box-shadow .15s;
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: var(--font-mono);
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 3px rgba(78,232,255,.15);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .submit-btn {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: .03em;
+    color: var(--bg);
+    background: var(--cyan);
+    border: none;
+    border-radius: 10px;
+    padding: 14px 24px;
+    cursor: pointer;
+    transition: transform .15s, background .15s;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: 100%;
+  }
+
+  .submit-btn:hover {
+    background: #2dd4d4;
+    transform: translateY(-2px);
+  }
+
+  .submit-btn:active {
+    transform: translateY(0);
+  }
+
+  .info-box {
+    background: rgba(78,232,255,.1);
+    border: 1px solid var(--cyan);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  .info-box strong {
+    color: var(--cyan);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .steps {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+
+  .steps h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+
+  .step {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: var(--cyan);
+    color: var(--bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-family: var(--font-mono);
+  }
+
+  .step-content {
+    color: var(--ink-muted);
+  }
+
+  .step-content strong {
+    color: var(--ink);
+    display: block;
+  }
+
+  .success-message {
+    display: none;
+    background: rgba(78,232,255,.1);
+    border: 1px solid var(--cyan);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .success-message.show {
+    display: block;
+  }
+
+  @media (max-width: 640px) {
+    .submit-container {
+      padding: 24px;
+      margin: 20px;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .submit-container h1 {
+      font-size: 24px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="marquee">
+    <img src="QPG%20Logo.png" alt="QPG logo" class="logo">
+    <div class="title-block">
+      <p class="eyebrow">Quick&nbsp;Playable&nbsp;Games</p>
+      <h1>SUBMIT YOUR GAME</h1>
+      <p class="tagline">Share your creation with 1000s of players</p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="submit-container">
+    
+    <div class="success-message" id="successMessage">
+      <strong style="color: var(--cyan); font-size: 16px;">✅ Game Submitted!</strong>
+      <p style="margin-top: 8px;">Our team will review your game shortly. You'll receive an email update at the address you provided.</p>
+    </div>
+
+    <h1>Submit Your Game</h1>
+    <p class="subtitle">Get your game featured on QPG Arcade, reach thousands of players, and earn while you showcase your creation.</p>
+
+    <div class="info-box">
+      <strong>🎮 How it works:</strong>
+      Submit your game code → Our team verifies → Pay ₹100 → Your game goes live with your credits!
+    </div>
+
+    <form id="gameSubmissionForm">
+      <!-- Game Title -->
+      <div class="form-group">
+        <label for="gameTitle">Game Title *</label>
+        <input 
+          type="text" 
+          id="gameTitle" 
+          name="gameTitle" 
+          placeholder="e.g., Neon Jumper" 
+          required
+        >
+      </div>
+
+      <!-- Game Description -->
+      <div class="form-group">
+        <label for="gameDescription">Game Description *</label>
+        <textarea 
+          id="gameDescription" 
+          name="gameDescription" 
+          placeholder="Brief description of what your game does (100-200 characters)"
+          required
+        ></textarea>
+      </div>
+
+      <!-- Category & Creator Name (Row) -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="gameCategory">Category *</label>
+          <select id="gameCategory" name="gameCategory" required>
+            <option value="">Select a category</option>
+            <option value="dodge">Dodge & Dash</option>
+            <option value="rhythm">Rhythm & Reflex</option>
+            <option value="puzzle">Puzzle & Brain</option>
+            <option value="party">Party</option>
+            <option value="3d">3D Games</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="creatorName">Your Name *</label>
+          <input 
+            type="text" 
+            id="creatorName" 
+            name="creatorName" 
+            placeholder="e.g., John Doe" 
+            required
+          >
+        </div>
+      </div>
+
+      <!-- Email & GitHub Profile (Row) -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="creatorEmail">Email Address *</label>
+          <input 
+            type="email" 
+            id="creatorEmail" 
+            name="creatorEmail" 
+            placeholder="your@email.com" 
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="creatorGithub">GitHub Profile (Optional)</label>
+          <input 
+            type="url" 
+            id="creatorGithub" 
+            name="creatorGithub" 
+            placeholder="https://github.com/username"
+          >
+        </div>
+      </div>
+
+      <!-- Game Code -->
+      <div class="form-group">
+        <label for="gameCode">Game Code (HTML/CSS/JS) *</label>
+        <textarea 
+          id="gameCode" 
+          name="gameCode" 
+          placeholder="Paste your complete game code here. Must be self-contained HTML (include CSS & JS inline or in <style>/<script> tags)"
+          required
+        ></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn">📤 Submit for Verification</button>
+    </form>
+
+    <!-- How it works section -->
+    <div class="steps">
+      <h3>📋 What Happens Next?</h3>
+      
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <strong>Submit</strong>
+          You fill out this form and submit your game code
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <strong>Verification</strong>
+          Our team reviews your game for quality, functionality & fun factor
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <strong>Payment</strong>
+          If approved, you'll receive an email with a payment link (₹100 via Razorpay)
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <strong>Live!</strong>
+          After payment, your game goes live on QPG Arcade with your credits
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>Made with ❤️ using HTML, CSS & JavaScript</p>
+</footer>
+
+<script>
+<script>
+```html
+<script>
+  const form = document.getElementById("gameSubmissionForm");
+  const successMessage = document.getElementById("successMessage");
+
+  // ==========================================================
+  // GOOGLE APPS SCRIPT WEB APP URL
+  // ==========================================================
+
+  const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbz5dYTYokptDqYeotrbRdd83UFxy8iA-3IhbdM6FJRfGXmCA4Af4-HQ70fP0gkgA4Nz/exec";
+
+
+  // ==========================================================
+  // SUBMIT FORM
+  // ==========================================================
+
+  form.addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+
+    const submitButton =
+      form.querySelector(".submit-btn");
+
+
+    // Disable button
+    submitButton.disabled = true;
+    submitButton.textContent = "⏳ Submitting...";
+
+
+    // ========================================================
+    // COLLECT FORM DATA
+    // ========================================================
+
+    const formData = {
+
+      // REQUIRED BY BACKEND
+      action: "submit",
+
+      userName:
+        document.getElementById("creatorName").value.trim(),
+
+      gameName:
+        document.getElementById("gameTitle").value.trim(),
+
+      gameEmoji:
+        document.getElementById("gameEmoji").value.trim(),
+
+      gameDescription:
+        document.getElementById("gameDescription").value.trim(),
+
+      gameCategory:
+        document.getElementById("gameCategory").value,
+
+      userEmail:
+        document.getElementById("creatorEmail").value.trim(),
+
+      userGithub:
+        document.getElementById("creatorGithub").value.trim(),
+
+      gameLink:
+        document.getElementById("gameLink").value.trim(),
+
+      gameCode:
+        document.getElementById("gameCode").value,
+
+      consent: "true"
+
+    };
+
+
+    // ========================================================
+    // BASIC FRONTEND VALIDATION
+    // ========================================================
+
+    if (!formData.gameName) {
+      alert("Please enter your game title.");
+      submitButton.disabled = false;
+      submitButton.textContent = "📤 Submit for Verification";
+      return;
+    }
+
+
+    if (!formData.gameDescription) {
+      alert("Please enter a game description.");
+      submitButton.disabled = false;
+      submitButton.textContent = "📤 Submit for Verification";
+      return;
+    }
+
+
+    if (!formData.gameEmoji) {
+      alert("Please enter a game emoji.");
+      submitButton.disabled = false;
+      submitButton.textContent = "📤 Submit for Verification";
+      return;
+    }
+
+
+    if (!formData.gameLink) {
+      alert("Please enter your playable game link.");
+      submitButton.disabled = false;
+      submitButton.textContent = "📤 Submit for Verification";
+      return;
+    }
+
+
+    if (!formData.gameCode) {
+      alert("Please paste your complete game code.");
+      submitButton.disabled = false;
+      submitButton.textContent = "📤 Submit for Verification";
+      return;
+    }
+
+
+    // ========================================================
+    // SEND TO GOOGLE APPS SCRIPT
+    // ========================================================
+
+    try {
+
+      await fetch(SCRIPT_URL, {
+
+        method: "POST",
+
+        mode: "no-cors",
+
+        headers: {
+          "Content-Type":
+            "text/plain;charset=utf-8"
+        },
+
+        body:
+          JSON.stringify(formData)
+
+      });
+
+
+      // ======================================================
+      // SUCCESS
+      // ======================================================
+
+      successMessage.classList.add("show");
+
+      form.reset();
+
+
+      // Scroll to success message
+      successMessage.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+
+      // Hide after 7 seconds
+      setTimeout(function() {
+
+        successMessage.classList.remove("show");
+
+      }, 7000);
+
+
+    } catch (error) {
+
+      console.error(
+        "Submission error:",
+        error
+      );
+
+
+      alert(
+        "There was a problem submitting your game. Please try again."
+      );
+
+    }
+
+
+    // ========================================================
+    // RE-ENABLE BUTTON
+    // ========================================================
+
+    submitButton.disabled = false;
+
+    submitButton.textContent =
+      "📤 Submit for Verification";
+
+  });
+</script>
+```
+
+</script>
+</script>
+
+</body>
+</html>

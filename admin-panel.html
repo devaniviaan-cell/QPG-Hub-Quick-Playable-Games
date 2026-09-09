@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel — QPG Arcade</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="/QPG%20Logo.png">
+
+<style>
+
+.admin-container{
+  max-width:1200px;
+  margin:40px auto;
+  padding:30px;
+}
+
+.login-page{
+  max-width:450px;
+  margin:70px auto;
+  padding:35px;
+  background:var(--bg-elev);
+  border:1px solid var(--line);
+  border-radius:16px;
+  text-align:center;
+}
+
+.login-page h2{
+  font-family:var(--font-display);
+  margin-bottom:20px;
+}
+
+.login-page input{
+  width:100%;
+  padding:13px;
+  background:var(--bg);
+  color:var(--ink);
+  border:1px solid var(--line);
+  border-radius:9px;
+  margin-bottom:15px;
+}
+
+.login-page button{
+  width:100%;
+  padding:13px;
+  border:0;
+  border-radius:9px;
+  background:var(--cyan);
+  color:var(--bg);
+  font-family:var(--font-mono);
+  font-weight:700;
+  cursor:pointer;
+}
+
+.dashboard{
+  display:none;
+}
+
+.dashboard.show{
+  display:block;
+}
+
+.admin-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:30px;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--line);
+}
+
+.admin-header h1{
+  font-family:var(--font-display);
+  color:var(--cyan);
+}
+
+.logout{
+  background:transparent;
+  color:#ff3f8e;
+  border:1px solid #ff3f8e;
+  border-radius:8px;
+  padding:8px 14px;
+  cursor:pointer;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:30px;
+}
+
+.stat{
+  background:var(--bg-elev);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:20px;
+  text-align:center;
+}
+
+.stat strong{
+  display:block;
+  color:var(--cyan);
+  font-family:var(--font-mono);
+  font-size:11px;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.stat span{
+  font-family:var(--font-display);
+  font-size:30px;
+}
+
+.submission{
+  background:var(--bg-elev);
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:25px;
+  margin-bottom:20px;
+}
+
+.submission h2{
+  font-family:var(--font-display);
+  margin-bottom:5px;
+}
+
+.status{
+  display:inline-block;
+  margin-bottom:20px;
+  padding:5px 10px;
+  border-radius:6px;
+  background:rgba(78,232,255,.1);
+  color:var(--cyan);
+  font-family:var(--font-mono);
+  font-size:10px;
+}
+
+.details{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.detail{
+  padding:12px;
+  background:var(--bg);
+  border-radius:8px;
+  color:var(--ink-muted);
+  font-size:13px;
+}
+
+.detail strong{
+  display:block;
+  color:var(--cyan);
+  font-family:var(--font-mono);
+  font-size:10px;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+
+.description{
+  padding:15px;
+  background:var(--bg);
+  border-radius:8px;
+  color:var(--ink-muted);
+  line-height:1.6;
+  margin-bottom:15px;
+}
+
+.code{
+  max-height:300px;
+  overflow:auto;
+  white-space:pre-wrap;
+  word-break:break-word;
+  padding:15px;
+  background:#05070d;
+  border:1px solid var(--line);
+  border-radius:8px;
+  color:var(--ink-muted);
+  font-family:var(--font-mono);
+  font-size:11px;
+  margin-bottom:20px;
+}
+
+.actions{
+  display:flex;
+  gap:12px;
+}
+
+.actions button{
+  flex:1;
+  padding:13px;
+  border:0;
+  border-radius:8px;
+  cursor:pointer;
+  font-family:var(--font-mono);
+  font-weight:700;
+}
+
+.approve{
+  background:var(--cyan);
+  color:var(--bg);
+}
+
+.decline{
+  background:#ff3f8e;
+  color:white;
+}
+
+.empty{
+  text-align:center;
+  padding:60px 20px;
+  color:var(--ink-muted);
+}
+
+@media(max-width:700px){
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .details{
+    grid-template-columns:1fr;
+  }
+
+  .admin-header{
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+
+<div class="marquee">
+
+<img src="QPG%20Logo.png" class="logo" alt="QPG logo">
+
+<div class="title-block">
+
+<p class="eyebrow">Quick&nbsp;Playable&nbsp;Games</p>
+
+<h1>ADMIN PANEL</h1>
+
+<p class="tagline">
+Review & manage game submissions
+</p>
+
+</div>
+
+</div>
+
+</header>
+
+<main>
+
+<div class="admin-container">
+
+<!-- LOGIN -->
+
+<div id="loginPage" class="login-page">
+
+<h2>🔐 QPG Admin Login</h2>
+
+<p style="color:var(--ink-muted);font-size:13px;margin-bottom:20px;">
+Enter the private admin key configured in the QPG submission backend.
+</p>
+
+<input
+  type="password"
+  id="adminKey"
+  placeholder="Admin key"
+  autocomplete="off"
+>
+
+<button onclick="login()">
+LOGIN
+</button>
+
+<p id="loginError"
+style="display:none;color:#ff3f8e;font-size:13px;margin-top:15px;">
+Invalid admin key.
+</p>
+
+</div>
+
+<!-- DASHBOARD -->
+
+<div id="dashboard" class="dashboard">
+
+<div class="admin-header">
+
+<h1>📊 Submission Dashboard</h1>
+
+<button class="logout" onclick="logout()">
+LOGOUT
+</button>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<strong>Pending</strong>
+<span id="pendingCount">0</span>
+</div>
+
+<div class="stat">
+<strong>Approved</strong>
+<span id="approvedCount">0</span>
+</div>
+
+<div class="stat">
+<strong>Declined</strong>
+<span id="declinedCount">0</span>
+</div>
+
+<div class="stat">
+<strong>Total</strong>
+<span id="totalCount">0</span>
+</div>
+
+</div>
+
+<div id="submissions"></div>
+
+</div>
+
+</div>
+
+</main>
+
+<footer>
+<p>Made with ❤️ using HTML, CSS & JavaScript</p>
+</footer>
+
+<script>
+
+/*
+==========================================================
+REPLACE THIS
+==========================================================
+*/
+
+const API_URL =
+"PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+let adminKey = "";
+let submissions = [];
+
+function login(){
+
+  adminKey =
+    document.getElementById("adminKey").value.trim();
+
+  if(!adminKey){
+    return;
+  }
+
+  loadSubmissions();
+
+}
+
+function logout(){
+
+  adminKey = "";
+
+  document.getElementById("dashboard")
+    .classList.remove("show");
+
+  document.getElementById("loginPage")
+    .style.display = "block";
+
+  document.getElementById("adminKey").value = "";
+
+}
+
+function loadSubmissions(){
+
+  const callback =
+    "qpgAdmin_" + Date.now();
+
+  window[callback] = function(result){
+
+    if(!result || !result.ok){
+
+      document.getElementById("loginError")
+        .style.display = "block";
+
+      return;
+
+    }
+
+    document.getElementById("loginError")
+      .style.display = "none";
+
+    submissions =
+      result.submissions || [];
+
+    document.getElementById("loginPage")
+      .style.display = "none";
+
+    document.getElementById("dashboard")
+      .classList.add("show");
+
+    render();
+
+    cleanup(callback);
+
+  };
+
+  const script =
+    document.createElement("script");
+
+  script.id = callback;
+
+  script.src =
+    API_URL +
+    "?action=list" +
+    "&adminKey=" +
+    encodeURIComponent(adminKey) +
+    "&callback=" +
+    callback;
+
+  document.body.appendChild(script);
+
+  setTimeout(function(){
+    cleanup(callback);
+  },10000);
+
+}
+
+function render(){
+
+  const pending =
+    submissions.filter(
+      s => s.status === "pending"
+    );
+
+  document.getElementById("pendingCount").textContent =
+    pending.length;
+
+  document.getElementById("approvedCount").textContent =
+    submissions.filter(
+      s => s.status === "approved"
+    ).length;
+
+  document.getElementById("declinedCount").textContent =
+    submissions.filter(
+      s => s.status === "declined"
+    ).length;
+
+  document.getElementById("totalCount").textContent =
+    submissions.length;
+
+  const container =
+    document.getElementById("submissions");
+
+  if(!pending.length){
+
+    container.innerHTML = `
+      <div class="empty">
+        <h2>✅ No Pending Submissions</h2>
+        <p>New submissions will appear here.</p>
+      </div>
+    `;
+
+    return;
+
+  }
+
+  container.innerHTML =
+    pending.map(function(s){
+
+      return `
+
+      <div class="submission">
+
+        <span class="status">
+          PENDING REVIEW
+        </span>
+
+        <h2>
+          ${escapeHTML(s.gameEmoji)}
+          ${escapeHTML(s.gameName)}
+        </h2>
+
+        <p style="color:var(--ink-muted);font-size:13px;margin-bottom:20px;">
+          Submitted by ${escapeHTML(s.userName)}
+        </p>
+
+        <div class="details">
+
+          <div class="detail">
+            <strong>Creator</strong>
+            ${escapeHTML(s.userName)}
+          </div>
+
+          <div class="detail">
+            <strong>Email</strong>
+            ${escapeHTML(s.userEmail)}
+          </div>
+
+          <div class="detail">
+            <strong>Category</strong>
+            ${escapeHTML(s.gameCategory)}
+          </div>
+
+          <div class="detail">
+            <strong>GitHub</strong>
+            ${
+              s.userGithub
+              ? `<a href="${safeURL(s.userGithub)}"
+                   target="_blank"
+                   rel="noopener"
+                   style="color:var(--cyan)">
+                   View Profile ↗
+                 </a>`
+              : "Not provided"
+            }
+          </div>
+
+          <div class="detail">
+            <strong>Game Link</strong>
+
+            <a href="${safeURL(s.gameLink)}"
+               target="_blank"
+               rel="noopener"
+               style="color:var(--cyan)">
+               Open Game ↗
+            </a>
+
+          </div>
+
+          <div class="detail">
+            <strong>Submission ID</strong>
+            ${escapeHTML(s.id)}
+          </div>
+
+        </div>
+
+        <div class="description">
+
+          <strong style="color:var(--cyan)">
+            DESCRIPTION
+          </strong>
+
+          <p style="margin-top:8px;">
+            ${escapeHTML(s.gameDescription)}
+          </p>
+
+        </div>
+
+        <div>
+
+          <strong style="color:var(--cyan);font-family:var(--font-mono);font-size:11px;">
+            COMPLETE GAME CODE
+          </strong>
+
+          <pre class="code">${escapeHTML(s.gameCode)}</pre>
+
+        </div>
+
+        <div class="actions">
+
+          <button
+            class="approve"
+            onclick="decide('${escapeJS(s.id)}','approved')">
+            ✓ APPROVE & ADD TO HUB
+          </button>
+
+          <button
+            class="decline"
+            onclick="decide('${escapeJS(s.id)}','declined')">
+            ✗ DECLINE
+          </button>
+
+        </div>
+
+      </div>
+
+      `;
+
+    }).join("");
+
+}
+
+function decide(id,status){
+
+  let reason = "";
+
+  if(status === "declined"){
+
+    reason =
+      prompt(
+        "Optional decline reason:"
+      ) || "";
+
+  }
+
+  if(status === "approved"){
+
+    const ok =
+      confirm(
+        "Approve this game?\n\n" +
+        "The backend will add it to QPG Hub automatically."
+      );
+
+    if(!ok) return;
+
+  }
+
+  const callback =
+    "qpgDecision_" + Date.now();
+
+  window[callback] = function(result){
+
+    if(!result || !result.ok){
+
+      alert(
+        "❌ Action failed:\n" +
+        (result && result.error
+          ? result.error
+          : "Unknown error")
+      );
+
+      cleanup(callback);
+
+      return;
+
+    }
+
+    if(status === "approved"){
+
+      alert(
+        "✅ Game approved and added to QPG Hub.\n\n" +
+        "The creator has been notified."
+      );
+
+    }else{
+
+      alert(
+        "❌ Game declined.\n\n" +
+        "Nothing was added to QPG Hub."
+      );
+
+    }
+
+    cleanup(callback);
+
+    loadSubmissions();
+
+  };
+
+  const script =
+    document.createElement("script");
+
+  script.id = callback;
+
+  script.src =
+    API_URL +
+    "?action=decide" +
+    "&adminKey=" +
+    encodeURIComponent(adminKey) +
+    "&id=" +
+    encodeURIComponent(id) +
+    "&status=" +
+    encodeURIComponent(status) +
+    "&reason=" +
+    encodeURIComponent(reason) +
+    "&callback=" +
+    callback;
+
+  document.body.appendChild(script);
+
+}
+
+function escapeHTML(value){
+
+  return String(value || "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+function escapeJS(value){
+
+  return String(value || "")
+    .replace(/\\/g,"\\\\")
+    .replace(/'/g,"\\'");
+
+}
+
+function safeURL(value){
+
+  try{
+
+    const url =
+      new URL(value);
+
+    if(
+      url.protocol === "http:" ||
+      url.protocol === "https:"
+    ){
+      return url.href;
+    }
+
+  }catch(e){}
+
+  return "#";
+
+}
+
+function cleanup(id){
+
+  const element =
+    document.getElementById(id);
+
+  if(element){
+    element.remove();
+  }
+
+  try{
+    delete window[id];
+  }catch(e){}
+
+}
+
+</script>
+
+</body>
+</html>

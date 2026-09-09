@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-site-verification" content="JkLFmQEl3h4S8mAsaxmtfxWYdFgsehujOHSuQr4dQgU" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">QPG Arcade — Quick Playable Games</title>
+<meta id="page-description" name="description" content="28 bite-size browser games. No installs, no accounts — pick one and press start.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="/QPG%20Logo.png">
+</head>
+<body>
+
+<header class="hero">
+  <div class="marquee">
+    <img src="QPG%20Logo.png" alt="QPG logo" class="logo">
+    <div class="title-block">
+      <p class="eyebrow">Quick&nbsp;Playable&nbsp;Games</p>
+      <h1>QPG ARCADE</h1>
+      <p class="tagline"><span id="game-count">28</span> bite-size games. No installs, no accounts. Press start.</p>
+    </div>
+    <div class="coin-slot">
+      <img src="QPG%20QR%20Code.png" alt="QR code to open QPG Games Hub" class="qr-image">
+      <span class="coin-label">Scan &amp; play</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="controls">
+    <label class="search-wrap">
+      <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><line x1="16.5" y1="16.5" x2="23" y2="23" stroke="currentColor" stroke-width="2"/></svg>
+      <input id="search" type="text" placeholder="Search games…" autocomplete="off" aria-label="Search games">
+    </label>
+    <div class="filters" id="filters" role="group" aria-label="Filter by category">
+      <button class="pill active" data-cat="all">All<span class="count"></span></button>
+      <button class="pill" data-cat="dodge">Dodge &amp; Dash<span class="count"></span></button>
+      <button class="pill" data-cat="rhythm">Rhythm &amp; Reflex<span class="count"></span></button>
+      <button class="pill" data-cat="puzzle">Puzzle &amp; Brain<span class="count"></span></button>
+      <button class="pill" data-cat="party">Party<span class="count"></span></button>
+      <button class="pill" data-cat="3d">3D Games<span class="count"></span></button>
+    </div>
+  </div>
+
+  <!-- Partner Hubs Section -->
+  <div class="external-hubs" style="margin: 1.5rem 0; text-align: center;">
+    <a href="https://agubcdeuycvuoyad.github.io/AY-GAME-HUB/" target="_blank" rel="noopener noreferrer" class="pill" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+      <span>🌐</span> Explore Partner Hub: <strong>AY Game Hub</strong> ↗
+    </a>
+  </div>
+
+  <p id="results-count" class="results-count" aria-live="polite"></p>
+
+  <div class="games" id="games">
+
+    <a class="card" data-cat="dodge" data-search="asteroid dodger nightfall dodge intergalactic skyscrapers" href="https://qpg-quick-playable-games.github.io/Astroid-dodger/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Dodge &amp; Dash</span>
+      <span class="icon">🏙️</span>
+      <h2>Asteroid Dodger — NightFall!</h2>
+      <p>Dodge the incoming intergalactic skyscrapers!</p>
+    </a>
+
+    <a class="card" data-cat="dodge" data-search="sky coin collector collect coins avoid bombs" href="https://qpg-quick-playable-games.github.io/Sky-coin-collector/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Dodge &amp; Dash</span>
+      <span class="icon">🪂</span>
+      <h2>Sky Coin Collector</h2>
+      <p>Collect coins and avoid bombs!</p>
+    </a>
+
+    <a class="card" data-cat="dodge" data-search="lane racer switch lanes avoid traffic" href="https://qpg-quick-playable-games.github.io/Lane-Racer/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Dodge &amp; Dash</span>
+      <span class="icon">🚗</span>
+      <h2>Lane Racer</h2>
+      <p>Switch lanes and avoid traffic!</p>
+    </a>
+
+    <a class="card" data-cat="dodge" data-search="robot runner jump electric barriers survive" href="https://qpg-quick-playable-games.github.io/Robot-runner/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Dodge &amp; Dash</span>
+      <span class="icon">🤖</span>
+      <h2>Robot Runner</h2>
+      <p>Jump over electric barriers and survive as long as you can!</p>
+    </a>
+
+    <a class="card" data-cat="dodge" data-search="ninja climber run up walls switch sides dodge obstacles" href="https://qpg-quick-playable-games.github.io/Ninja-Climber/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Dodge &amp; Dash</span>
+      <span class="icon">🥷</span>
+      <h2>Ninja Climber</h2>
+      <p>Run up the walls, switch sides, and dodge deadly obstacles!</p>
+    </a>
+
+    <a class="card" data-cat="dodge" data-search="bounce master bouncy ball obstacles high score" href="https://arshyoutube67-cpu.github.io/Bouncy-Ball/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Dodge &amp; Dash</span>
+      <span class="icon">🏀</span>
+      <h2>Bounce Master</h2>
+      <p>Bounce through obstacles, stay alive, and beat your high score!</p>
+    </a>
+
+    <a class="card" data-cat="dodge" data-search="one button glide tap press glide obstacles timing" href="https://arshyoutube67-cpu.github.io/One-Button-glide/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Dodge &amp; Dash</span>
+      <span class="icon">🛹</span>
+      <h2>One-Button Glide</h2>
+      <p>Tap or press to glide through obstacles — simple control, tricky timing.</p>
+    </a>
+
+    <a class="card" data-cat="puzzle" data-search="colour match find tile matches target colour grid" href="https://qpg-quick-playable-games.github.io/Colour-Match/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Puzzle &amp; Brain</span>
+      <span class="icon">🎨</span>
+      <h2>Colour Match</h2>
+      <p>Find the tile that exactly matches the target colour — progressively larger grids and increasing difficulty.</p>
+    </a>
+
+    <a class="card" data-cat="rhythm" data-search="shape sprint race match shapes quickly fast reflexes" href="https://qpg-quick-playable-games.github.io/Shape-Sprint/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Rhythm &amp; Reflex</span>
+      <span class="icon">⚡</span>
+      <h2>Shape Sprint</h2>
+      <p>Race to match shapes quickly — fast reflexes win!</p>
+    </a>
+
+    <a class="card" data-cat="rhythm" data-search="pulse arm pump rhythm keep beat arm swinging" href="https://arshyoutube67-cpu.github.io/Pulse-Arm/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Rhythm &amp; Reflex</span>
+      <span class="icon">💓</span>
+      <h2>Pulse Arm</h2>
+      <p>Pump up the rhythm and keep the beat with arm-swinging action!</p>
+    </a>
+
+    <a class="card" data-cat="dodge" data-search="neon jumper leap glowing platforms avoid gaps climb high" href="https://devaniviaan-cell.github.io/Gammm/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Dodge &amp; Dash</span>
+      <span class="icon">🕹️</span>
+      <h2>Neon Jumper</h2>
+      <p>Leap between glowing platforms, avoid deadly gaps, and climb as high as you can.</p>
+    </a>
+
+    <a class="card" data-cat="rhythm" data-search="pulsekeeper keep pulse steady survive rhythm challenge" href="https://arshyoutube67-cpu.github.io/PULSEKEEPER/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Rhythm &amp; Reflex</span>
+      <span class="icon">💓</span>
+      <h2>PulseKeeper</h2>
+      <p>Keep your pulse steady and survive the rhythm challenge!</p>
+    </a>
+
+    <a class="card" data-cat="dodge" data-search="shape shooter dodge shapes shoot" href="https://qpg-quick-playable-games.github.io/Shape-Shooter/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Dodge &amp; Dash</span>
+      <span class="icon">🔺</span>
+      <h2>Shape Shooter</h2>
+      <p>Dodge other shapes and shoot them down!</p>
+    </a>
+
+    <a class="card" data-cat="puzzle" data-search="guess the flags nightmare impossible times trivia" href="https://qpg-quick-playable-games.github.io/Guess-the-Flags-Nightmare/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Puzzle &amp; Brain</span>
+      <span class="icon">🇹🇷</span>
+      <h2>Guess the Flags — Nightmare!</h2>
+      <p>Guess impossible flags in impossible times!</p>
+    </a>
+
+    <a class="card" data-cat="puzzle" data-search="combo cascade build combos cascade levels" href="https://qpg-quick-playable-games.github.io/Combo-Cascade/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Puzzle &amp; Brain</span>
+      <span class="icon">🎯</span>
+      <h2>Combo Cascade</h2>
+      <p>Build massive combos and cascade through levels!</p>
+    </a>
+
+    <a class="card" data-cat="rhythm" data-search="beat the line follow the beat stay on line" href="https://qpg-quick-playable-games.github.io/Beat-The-line/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Rhythm &amp; Reflex</span>
+      <span class="icon">🎵</span>
+      <h2>Beat the Line</h2>
+      <p>Follow the beat and stay on the line!</p>
+    </a>
+
+    <a class="card" data-cat="puzzle" data-search="like clockwork change time periods new platforms beat levels" href="https://qpg-quick-playable-games.github.io/Like-Clockwork/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Puzzle &amp; Brain</span>
+      <span class="icon">⏰</span>
+      <h2>Like Clockwork</h2>
+      <p>Change time periods to get access to new platforms, and beat the levels!</p>
+    </a>
+
+    <a class="card" data-cat="party" data-search="vibe call zoom for gamers trivia rock paper scissors friends" href="https://arshyoutube67-cpu.github.io/VibeCall/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Party</span>
+      <span class="icon">📞</span>
+      <h2>Vibe Call</h2>
+      <p>Zoom for gamers! Play trivia, RPS, and an assortment of other games while talking with your friends!</p>
+    </a>
+
+    <a class="card" data-cat="party" data-search="the red button decides which game you play hundreds of games" href="https://arshyoutube67-cpu.github.io/The-red-button/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Party</span>
+      <span class="icon">🔴</span>
+      <h2>The Red Button</h2>
+      <p>The red button decides which game you play! Try it out, with the hundreds of games in store.</p>
+    </a>
+
+    <a class="card" data-cat="dodge" data-search="orbit dodge change orbit ufo destroy asteroids" href="https://qpg-quick-playable-games.github.io/Orbit-Dodge/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Dodge &amp; Dash</span>
+      <span class="icon">🛸</span>
+      <h2>Orbit Dodge</h2>
+      <p>Change the orbit of a moving UFO, and make sure to destroy those asteroids!</p>
+    </a>
+
+    <a class="card" data-cat="dodge" data-search="space invaders destroy alien invaders shoot survive high score" href="https://qpg-quick-playable-games.github.io/Space-Invaders-style-Game/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Dodge &amp; Dash</span>
+      <span class="icon">👾</span>
+      <h2>Space Invaders</h2>
+      <p>Destroy the alien invaders and survive the waves! Multiple difficulty levels to challenge yourself.</p>
+    </a>
+
+    <a class="card" data-cat="puzzle" data-search="guess the football legend trivia famous players legendary footballers soccer quiz" href="https://devaniviaan-cell.github.io/Guess-the-Football-L/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Puzzle &amp; Brain</span>
+      <span class="icon">⚽</span>
+      <h2>Guess the Football Legend</h2>
+      <p>Test your football knowledge! Guess the legendary players from clues and become the ultimate football legend expert!</p>
+    </a>
+
+    <a class="card" data-cat="dodge" data-search="roll n leap roll leap jump obstacles ball" href="https://qpg-quick-playable-games.github.io/Roll-N-Leap/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Dodge &amp; Dash</span>
+      <span class="icon">🎲</span>
+      <h2>Roll 'N' Leap</h2>
+      <p>Roll, time your jumps, and leap over everything standing between you and a new high score!</p>
+    </a>
+
+    <a class="card" data-cat="dodge" data-search="evolution arena tiny creature collect dna mutations evolve body types enemies biomes" href="https://devaniviaan-cell.github.io/-Evolution-Arena/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Dodge &amp; Dash</span>
+      <span class="icon">🧬</span>
+      <h2>Evolution Arena</h2>
+      <p>Start as a tiny creature, collect DNA, unlock mutations, evolve into completely different body types, and fight increasingly bizarre enemies!</p>
+    </a>
+
+    <a class="card" data-cat="puzzle" data-search="mutation lab combine creatures elements discovery crafting" href="https://agubcdeuycvuoyad.github.io/Mutation-Lab/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Puzzle &amp; Discovery</span>
+      <span class="icon">🧬</span>
+      <h2>Mutation Lab</h2>
+      <p>Combine creatures, elements, and mutations to discover thousands of unique creations!</p>
+    </a>
+    
+    <a class="card" data-cat="puzzle" data-search="tiny kingdom build castle resources villagers strategy puzzle brain" href="https://agubcdeuycvuoyad.github.io/Tiny-kingdom/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Puzzle &amp; Brain</span>
+      <span class="icon">🏰</span>
+      <h2>Tiny Kingdom</h2>
+      <p>Gather resources, build powerful structures, grow your village, and create the ultimate kingdom!</p>
+    </a>
+
+    <a class="card" data-cat="dodge" data-search="star defender ship dodge shooter strategy polished arcade" href="https://qpg-quick-playable-games.github.io/Star-Defender/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Dodge &amp; Dash</span>
+      <span class="icon">💫</span>
+      <h2>Star Defender</h2>
+      <p>Dodge ramming enemies, shoot like your life depends on it, and challenge enthralling bosses!</p>
+    </a>
+
+    <a class="card" data-cat="3d" data-search="3d Memo combat shooter strategy polished arcade maps" href="https://qpg-quick-playable-games.github.io/ShooterMemo/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">3D &amp; Games</span>
+      <span class="icon">🦿</span>
+      <h2>Shooter Memo</h2>
+      <p>Survive waves of robotic enemies in Single player, and destroy your friends in Multiplayer, all in 3 new maps! This is the QPG Games Hub's first 3D Game!</p>
+    </a>
+
+    <a class="card" data-cat="dodge" data-search="subway jumper jump dodge train run obstacles runner" href="https://qpg-quick-playable-games.github.io/Subway-Jumper/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Dodge &amp; Dash</span>
+      <span class="icon">🏃</span>
+      <h2>Subway Jumper</h2>
+      <p>Dash through tracks, jump over obstacles, and test your reflexes in this fast-paced runner!</p>
+    </a>
+
+    <a class="card" data-cat="puzzle" data-search="chess master strategy board game puzzle brain" href="https://devaniviaan-cell.github.io/Chess-Master/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Puzzle &amp; Brain</span>
+      <span class="icon">♟️</span>
+      <h2>Chess Master</h2>
+      <p>Play Chess Master and test your strategy!</p>
+    </a>
+
+    <a class="card" data-cat="puzzle" data-search="password panic generate create strong password hints puzzle brain" href="https://devaniviaan-cell.github.io/Generate-the-Password/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Puzzle &amp; Brain</span>
+      <span class="icon">🔑</span>
+      <h2>Password Panic</h2>
+      <p>Create a big and strong password with the Hints</p>
+    </a>
+
+    <a class="card" data-cat="puzzle" data-search="crack the password hints minimum tries puzzle brain" href="https://qpg-quick-playable-games.github.io/Crack-the-Password/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">Puzzle &amp; Brain</span>
+      <span class="icon">🔐</span>
+      <h2>Crack the Password</h2>
+      <p>Use the Hints to Crack the Passwords in Minimum tries!</p>
+    </a>
+
+    <a class="card" data-cat="3d" data-search="parkour obby 3d platformer jump obstacles climb" href="https://devaniviaan-cell.github.io/Parkour-Obby-3D/">
+      <span class="scanline" aria-hidden="true"></span>
+      <span class="cat-tag">3D &amp; Games</span>
+      <span class="icon">🏃‍♂️</span>
+      <h2>Parkour Obby 3D</h2>
+      <p>Master parkour moves, overcome challenging obstacles, and reach the finish line in this 3D platformer adventure!</p>
+    </a>
+    
+  </div>
+
+  <p id="empty-state" class="empty-state" hidden>
+    No games match "<span id="empty-query"></span>". Try a different search or category.
+  </p>
+
+  <!-- Submit Your Game Section -->
+  <div style="margin: 60px 0 40px; padding-top: 40px; border-top: 1px solid var(--line); text-align: center;">
+    <h2 style="font-family: var(--font-display); font-size: 24px; color: var(--ink); margin-bottom: 12px;">Have Your Own Game?</h2>
+    <p style="color: var(--ink-muted); margin-bottom: 24px; font-size: 14px;">Share your creation with thousands of players on QPG Arcade!</p>
+    <a href="submit-game.html" class="pill" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; background: var(--cyan); color: var(--bg); font-weight: 600; padding: 12px 28px; border: none; border-radius: 10px; cursor: pointer; transition: background .15s; font-size: 14px;">
+      📤 Submit Your Game
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  <p>Made with ❤️ using HTML, CSS & JavaScript</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
